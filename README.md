@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/CarolinaCCZ/poolobject.svg?branch=master)](https://travis-ci.org/CarolinaCCZ/poolobject)
+
+[![codecov](https://codecov.io/gh/CarolinaCCZ/poolobject/branch/master/graph/badge.svg)](https://codecov.io/gh/CarolinaCCZ/poolobject)
+
 poolobject
 ==========
 
