@@ -84,7 +84,7 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testReleaseReusable() throws NotFreeInstanceException {
-		//reu1 y reu2 se añaden al vectro de Reusable
+		//reu1 y reu2 se añaden al vector de Reusable
 		reusables.add(reu1);
 		reusables.add(reu2);
 		try{

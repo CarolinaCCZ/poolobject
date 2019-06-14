@@ -5,67 +5,100 @@ package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.*;
 
+import java.util.Vector;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.Client;
+import ubu.gii.dass.c01.DuplicatedInstanceException;
+import ubu.gii.dass.c01.NotFreeInstanceException;
+import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
  * @author Carolina Colina Zamorano
  *
  */
-<span class="fc" id="L18">public class ReusablePoolTest {</span>
+<span class="fc" id="L24">public class ReusablePoolTest {</span>
 
 	private ReusablePool pool;
+	private Vector&lt;Reusable&gt; reusables;
+	private Reusable reu1,reu2,reu3;
+<span class="fc" id="L29">	Reusable elemento=new Reusable();</span>
+<span class="fc" id="L30">	Client cliente=new Client();</span>
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-<span class="fc" id="L27">		pool = ReusablePool.getInstance();</span>
-<span class="fc" id="L28">	}</span>
+<span class="fc" id="L37">		pool = ReusablePool.getInstance();</span>
+<span class="fc" id="L38">	}</span>
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@After
 	public void tearDown() throws Exception {
-<span class="fc" id="L35">		pool = null;</span>
-<span class="fc" id="L36">	}</span>
+<span class="fc" id="L45">		pool = null;</span>
+<span class="fc" id="L46">	}</span>
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#getInstance()}.
 	 */
 	@Test
 	public void testGetInstance() {
-<span class="fc" id="L43">		ReusablePool pool = ReusablePool.getInstance(); </span>
+<span class="fc" id="L53">		ReusablePool pool = ReusablePool.getInstance(); </span>
 		
 		// No es nulo
-<span class="fc" id="L46">		assertNotNull(pool);</span>
+<span class="fc" id="L56">		assertNotNull(pool);</span>
 
 		// El objeto devuelto es instancia de ReusablePool
-<span class="fc" id="L49">		assertTrue(pool instanceof ReusablePool);</span>
-<span class="fc" id="L50">	}</span>
+<span class="fc" id="L59">		assertTrue(pool instanceof ReusablePool);</span>
+<span class="fc" id="L60">	}</span>
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
+	 * @throws NotFreeInstanceException 
 	 */
 	@Test
-	public void testAcquireReusable() {
-<span class="nc" id="L57">		fail(&quot;Not yet implemented&quot;);</span>
-<span class="nc" id="L58">	}</span>
+	public void testAcquireReusable() throws NotFreeInstanceException {
+		//Creaci�n de objeto Reusable que nos indicara cuando no existen m�s objetos Reusable
+<span class="fc" id="L69">				Reusable flag = pool.acquireReusable();</span>
+				try{
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">					while(flag!=null){</span>
+<span class="fc" id="L72">						flag = pool.acquireReusable();</span>
+					}
+<span class="fc" id="L74">				}catch(NotFreeInstanceException e){</span>
+<span class="fc" id="L75">					System.err.println(e);</span>
+<span class="nc" id="L76">		}</span>
+<span class="fc" id="L77">	}</span>
 
 	/**
 	 * Test method for
 	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}
 	 * .
+	 * @throws NotFreeInstanceException 
 	 */
 	@Test
-	public void testReleaseReusable() {
-<span class="nc" id="L67">		fail(&quot;Not yet implemented&quot;);</span>
-<span class="nc" id="L68">	}</span>
+	public void testReleaseReusable() throws NotFreeInstanceException {
+		//reu1 y reu2 se a�aden al vector de Reusable
+<span class="nc" id="L88">		reusables.add(reu1);</span>
+<span class="nc" id="L89">		reusables.add(reu2);</span>
+		try{
+			//reu3 solicita un objeto Reusable
+<span class="nc" id="L92">			reu3=pool.acquireReusable();</span>
+			//reu3 se a�ade al vector de Reusable
+<span class="nc" id="L94">			reusables.add(reu3);</span>
+			//Se comprueba que no se puede a�adir dos veces el mismo objeto Reusable
+<span class="nc" id="L96">			pool.releaseReusable(reu3);</span>
+<span class="nc" id="L97">			pool.releaseReusable(reu3);</span>
+<span class="nc" id="L98">		}catch(DuplicatedInstanceException e){</span>
+<span class="nc" id="L99">			System.err.println(e);</span>
+<span class="nc" id="L100">		}</span>
+<span class="nc" id="L101">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
