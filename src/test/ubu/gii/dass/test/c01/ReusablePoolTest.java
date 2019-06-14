@@ -1,5 +1,6 @@
 /**
  *  PRACTICA 1
+ *  Medir para caracterizar entidades de productos y procesos software
  */
 package ubu.gii.dass.test.c01;
 
