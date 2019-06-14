@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ubu.gii.dass.c01.Client;
+import ubu.gii.dass.c01.DuplicatedInstanceException;
 import ubu.gii.dass.c01.NotFreeInstanceException;
 import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
@@ -79,10 +80,24 @@ public class ReusablePoolTest {
 	 * Test method for
 	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}
 	 * .
+	 * @throws NotFreeInstanceException 
 	 */
 	@Test
-	public void testReleaseReusable() {
-		fail("Not yet implemented");
+	public void testReleaseReusable() throws NotFreeInstanceException {
+		//reu1 y reu2 se añaden al vectro de Reusable
+		reusables.add(reu1);
+		reusables.add(reu2);
+		try{
+			//reu3 solicita un objeto Reusable
+			reu3=pool.acquireReusable();
+			//reu3 se añade al vector de Reusable
+			reusables.add(reu3);
+			//Se comprueba que no se puede añadir dos veces el mismo objeto Reusable
+			pool.releaseReusable(reu3);
+			pool.releaseReusable(reu3);
+		}catch(DuplicatedInstanceException e){
+			System.err.println(e);
+		}
 	}
 
 }
