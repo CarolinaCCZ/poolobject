@@ -5,10 +5,15 @@ package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.*;
 
+import java.util.Vector;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.Client;
+import ubu.gii.dass.c01.NotFreeInstanceException;
+import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
@@ -18,6 +23,10 @@ import ubu.gii.dass.c01.ReusablePool;
 public class ReusablePoolTest {
 
 	private ReusablePool pool;
+	private Vector<Reusable> reusables;
+	private Reusable reu1,reu2,reu3;
+	Reusable elemento=new Reusable();
+	Client cliente=new Client();
 
 	/**
 	 * @throws java.lang.Exception
@@ -51,10 +60,19 @@ public class ReusablePoolTest {
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
+	 * @throws NotFreeInstanceException 
 	 */
 	@Test
-	public void testAcquireReusable() {
-		fail("Not yet implemented");
+	public void testAcquireReusable() throws NotFreeInstanceException {
+		//Creación de objeto Reusable que nos indicara cuando no existen más objetos Reusable
+				Reusable flag = pool.acquireReusable();
+				try{
+					while(flag!=null){
+						flag = pool.acquireReusable();
+					}
+				}catch(NotFreeInstanceException e){
+					System.err.println(e);
+		}
 	}
 
 	/**
