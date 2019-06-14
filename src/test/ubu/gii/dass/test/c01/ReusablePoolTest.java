@@ -16,7 +16,7 @@ import ubu.gii.dass.c01.ReusablePool;
  *
  */
 public class ReusablePoolTest {
-	
+
 	private ReusablePool pool;
 
 	/**
@@ -40,7 +40,13 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		ReusablePool pool = ReusablePool.getInstance(); 
+		
+		// No es nulo
+		assertNotNull(pool);
+
+		// El objeto devuelto es instancia de ReusablePool
+		assertTrue(pool instanceof ReusablePool);
 	}
 
 	/**
@@ -52,7 +58,9 @@ public class ReusablePoolTest {
 	}
 
 	/**
-	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}
+	 * .
 	 */
 	@Test
 	public void testReleaseReusable() {
