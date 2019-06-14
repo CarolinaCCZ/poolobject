@@ -25,9 +25,9 @@ public class ReusablePoolTest {
 
 	private ReusablePool pool;
 	private Vector<Reusable> reusables;
-	private Reusable reu1,reu2,reu3;
-	Reusable elemento=new Reusable();
-	Client cliente=new Client();
+	private Reusable reu1, reu2, reu3;
+	Reusable elemento = new Reusable();
+	Client cliente = new Client();
 
 	/**
 	 * @throws java.lang.Exception
@@ -50,8 +50,8 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		ReusablePool pool = ReusablePool.getInstance(); 
-		
+		ReusablePool pool = ReusablePool.getInstance();
+
 		// No es nulo
 		assertNotNull(pool);
 
@@ -61,18 +61,20 @@ public class ReusablePoolTest {
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
-	 * @throws NotFreeInstanceException 
+	 * 
+	 * @throws NotFreeInstanceException
 	 */
 	@Test
 	public void testAcquireReusable() throws NotFreeInstanceException {
-		//Creación de objeto Reusable que nos indicara cuando no existen más objetos Reusable
-				Reusable flag = pool.acquireReusable();
-				try{
-					while(flag!=null){
-						flag = pool.acquireReusable();
-					}
-				}catch(NotFreeInstanceException e){
-					System.err.println(e);
+		// Creación de objeto Reusable que nos indicara cuando no existen más
+		// objetos Reusable
+		Reusable flag = pool.acquireReusable();
+		try {
+			while (flag != null) {
+				flag = pool.acquireReusable();
+			}
+		} catch (NotFreeInstanceException e) {
+			System.err.println(e);
 		}
 	}
 
@@ -80,24 +82,29 @@ public class ReusablePoolTest {
 	 * Test method for
 	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}
 	 * .
-	 * @throws NotFreeInstanceException 
+	 * 
+	 * @throws NotFreeInstanceException
 	 */
 	@Test
 	public void testReleaseReusable() throws NotFreeInstanceException {
-		//reu1 y reu2 se añaden al vector de Reusable
-		reusables.add(reu1);
-		reusables.add(reu2);
-		try{
-			//reu3 solicita un objeto Reusable
-			reu3=pool.acquireReusable();
-			//reu3 se añade al vector de Reusable
-			reusables.add(reu3);
-			//Se comprueba que no se puede añadir dos veces el mismo objeto Reusable
-			pool.releaseReusable(reu3);
-			pool.releaseReusable(reu3);
-		}catch(DuplicatedInstanceException e){
-			System.err.println(e);
+		boolean excep = false;
+		boolean release = false;
+		ReusablePool rp = ReusablePool.getInstance();
+		Reusable r = null;
+		try {
+			r = rp.acquireReusable();
+		} catch (NotFreeInstanceException e) {
+			assertTrue(false);
 		}
+		try {
+			rp.releaseReusable(r);
+			release = true;
+			rp.releaseReusable(r);
+		} catch (DuplicatedInstanceException e) {
+			excep = true;
+		}
+		assertTrue(release);
+		assertTrue(excep);
 	}
 
 }
