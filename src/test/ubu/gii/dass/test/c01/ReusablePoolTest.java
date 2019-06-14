@@ -18,14 +18,12 @@ import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
- * @author Carolina Colina Zamorano
+ * @author Carolina
  *
  */
 public class ReusablePoolTest {
 
 	private ReusablePool pool;
-	private Vector<Reusable> reusables;
-	private Reusable reu1, reu2, reu3;
 	Reusable elemento = new Reusable();
 	Client cliente = new Client();
 
