@@ -5,8 +5,6 @@ package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.*;
 
-import java.util.Vector;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,7 +62,7 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testAcquireReusable() throws NotFreeInstanceException {
-		// Creación de objeto Reusable que nos indicara cuando no existen más
+		// Creacion de objeto Reusable que nos indicara cuando no existen mas
 		// objetos Reusable
 		Reusable flag = pool.acquireReusable();
 		try {
