@@ -27,7 +27,7 @@ No, el trabajo lo he realizado de manera individual. GitHub: https://github.com/
 
 - ¿Tiene calidad el conjunto de pruebas disponibles?
 
-Segun codecov, las pruebas tienen una cobertura de un 100% del código de ReusablePool y las excepciones: https://codecov.io/gh/rlp0019/poolobject/tree/master/src/main/ubu/gii/dass/c01
+
 
 - ¿Cuál es el esfuerzo invertido en realizar la actividad?
 
