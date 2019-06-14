@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReusablePoolTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Práctica 1</a> &gt; <a href="index.source.html" class="el_package">ubu.gii.dass.test.c01</a> &gt; <span class="el_source">ReusablePoolTest.java</span></div><h1>ReusablePoolTest.java</h1><pre class="source lang-java linenums">/**
+ *  PRACTICA 1
+ */
+package ubu.gii.dass.test.c01;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import ubu.gii.dass.c01.ReusablePool;
+
+/**
+ * @author Carolina Colina Zamorano
+ *
+ */
+<span class="fc" id="L18">public class ReusablePoolTest {</span>
+
+	private ReusablePool pool;
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L27">		pool = ReusablePool.getInstance();</span>
+<span class="fc" id="L28">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L35">		pool = null;</span>
+<span class="fc" id="L36">	}</span>
+
+	/**
+	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#getInstance()}.
+	 */
+	@Test
+	public void testGetInstance() {
+<span class="fc" id="L43">		ReusablePool pool = ReusablePool.getInstance(); </span>
+		
+		// No es nulo
+<span class="fc" id="L46">		assertNotNull(pool);</span>
+
+		// El objeto devuelto es instancia de ReusablePool
+<span class="fc" id="L49">		assertTrue(pool instanceof ReusablePool);</span>
+<span class="fc" id="L50">	}</span>
+
+	/**
+	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
+	 */
+	@Test
+	public void testAcquireReusable() {
+<span class="nc" id="L57">		fail(&quot;Not yet implemented&quot;);</span>
+<span class="nc" id="L58">	}</span>
+
+	/**
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}
+	 * .
+	 */
+	@Test
+	public void testReleaseReusable() {
+<span class="nc" id="L67">		fail(&quot;Not yet implemented&quot;);</span>
+<span class="nc" id="L68">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
