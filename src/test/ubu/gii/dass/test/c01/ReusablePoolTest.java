@@ -1,5 +1,5 @@
 /**
- * 
+ *  PRACTICA 1
  */
 package ubu.gii.dass.test.c01;
 
@@ -9,17 +9,22 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.ReusablePool;
+
 /**
  * @author Carolina Colina Zamorano
  *
  */
 public class ReusablePoolTest {
+	
+	private ReusablePool pool;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		pool = ReusablePool.getInstance();
 	}
 
 	/**
