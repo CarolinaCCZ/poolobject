@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/CarolinaCCZ/poolobject.svg?branch=master)](https://travis-ci.org/CarolinaCCZ/poolobject)
+
+[![codecov](https://codecov.io/gh/CarolinaCCZ/poolobject/branch/master/graph/badge.svg)](https://codecov.io/gh/CarolinaCCZ/poolobject)
+
 poolobject
 ==========
 
@@ -27,12 +31,12 @@ No, el trabajo lo he realizado de manera individual. GitHub: https://github.com/
 
 - ¿Tiene calidad el conjunto de pruebas disponibles?
 
-
+Las pruebas indican que la clase ReusablePool tiene una covertura del 100% como se puede ver en Codecov. La cobertura total del proyecto es del 74,28% puesto que las clases Client y Reusable están al 50%.
 
 - ¿Cuál es el esfuerzo invertido en realizar la actividad?
 
 Teniendo en cuenta que la herramienta de eclipse la tenía un poco olvidada puesto que hace algunos años que no la utilizo, me ha llevado más tiempo del esperado.
-En total he empleado unas 6 horas en dos días aproximadamente.
+En total he empleado unas 6 horas aproximadamente en tres días.
 
 - ¿Cuál es el número de fallos encontrados en el código?
 
