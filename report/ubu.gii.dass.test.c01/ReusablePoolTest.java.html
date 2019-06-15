@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReusablePoolTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Práctica 1</a> &gt; <a href="index.source.html" class="el_package">ubu.gii.dass.test.c01</a> &gt; <span class="el_source">ReusablePoolTest.java</span></div><h1>ReusablePoolTest.java</h1><pre class="source lang-java linenums">/**
  *  PRACTICA 1
+ *  Medir para caracterizar entidades de productos y procesos software
  */
 package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.*;
-
-import java.util.Vector;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,41 +20,41 @@ import ubu.gii.dass.c01.ReusablePool;
  * @author Carolina
  *
  */
-<span class="fc" id="L24">public class ReusablePoolTest {</span>
+<span class="fc" id="L23">public class ReusablePoolTest {</span>
 
 	private ReusablePool pool;
-<span class="fc" id="L27">	Reusable elemento = new Reusable();</span>
-<span class="fc" id="L28">	Client cliente = new Client();</span>
+<span class="fc" id="L26">	Reusable elemento = new Reusable();</span>
+<span class="fc" id="L27">	Client cliente = new Client();</span>
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-<span class="fc" id="L35">		pool = ReusablePool.getInstance();</span>
-<span class="fc" id="L36">	}</span>
+<span class="fc" id="L34">		pool = ReusablePool.getInstance();</span>
+<span class="fc" id="L35">	}</span>
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@After
 	public void tearDown() throws Exception {
-<span class="fc" id="L43">		pool = null;</span>
-<span class="fc" id="L44">	}</span>
+<span class="fc" id="L42">		pool = null;</span>
+<span class="fc" id="L43">	}</span>
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#getInstance()}.
 	 */
 	@Test
 	public void testGetInstance() {
-<span class="fc" id="L51">		ReusablePool pool = ReusablePool.getInstance();</span>
+<span class="fc" id="L50">		ReusablePool pool = ReusablePool.getInstance();</span>
 
 		// No es nulo
-<span class="fc" id="L54">		assertNotNull(pool);</span>
+<span class="fc" id="L53">		assertNotNull(pool);</span>
 
 		// El objeto devuelto es instancia de ReusablePool
-<span class="fc" id="L57">		assertTrue(pool instanceof ReusablePool);</span>
-<span class="fc" id="L58">	}</span>
+<span class="fc" id="L56">		assertTrue(pool instanceof ReusablePool);</span>
+<span class="fc" id="L57">	}</span>
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
@@ -64,17 +63,17 @@ import ubu.gii.dass.c01.ReusablePool;
 	 */
 	@Test
 	public void testAcquireReusable() throws NotFreeInstanceException {
-		// Creaci�n de objeto Reusable que nos indicara cuando no existen m�s
+		// Creacion de objeto Reusable que nos indicara cuando no existen mas
 		// objetos Reusable
-<span class="fc" id="L69">		Reusable flag = pool.acquireReusable();</span>
+<span class="fc" id="L68">		Reusable flag = pool.acquireReusable();</span>
 		try {
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">			while (flag != null) {</span>
-<span class="fc" id="L72">				flag = pool.acquireReusable();</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">			while (flag != null) {</span>
+<span class="fc" id="L71">				flag = pool.acquireReusable();</span>
 			}
-<span class="fc" id="L74">		} catch (NotFreeInstanceException e) {</span>
-<span class="fc" id="L75">			System.err.println(e);</span>
-<span class="nc" id="L76">		}</span>
-<span class="fc" id="L77">	}</span>
+<span class="fc" id="L73">		} catch (NotFreeInstanceException e) {</span>
+<span class="fc" id="L74">			System.err.println(e);</span>
+<span class="nc" id="L75">		}</span>
+<span class="fc" id="L76">	}</span>
 
 	/**
 	 * Test method for
@@ -85,25 +84,25 @@ import ubu.gii.dass.c01.ReusablePool;
 	 */
 	@Test
 	public void testReleaseReusable() throws NotFreeInstanceException {
-<span class="fc" id="L88">		boolean excep = false;</span>
-<span class="fc" id="L89">		boolean release = false;</span>
-<span class="fc" id="L90">		ReusablePool rp = ReusablePool.getInstance();</span>
-<span class="fc" id="L91">		Reusable r = null;</span>
+<span class="fc" id="L87">		boolean excep = false;</span>
+<span class="fc" id="L88">		boolean release = false;</span>
+<span class="fc" id="L89">		ReusablePool rp = ReusablePool.getInstance();</span>
+<span class="fc" id="L90">		Reusable r = null;</span>
 		try {
-<span class="fc" id="L93">			r = rp.acquireReusable();</span>
-<span class="nc" id="L94">		} catch (NotFreeInstanceException e) {</span>
-<span class="nc" id="L95">			assertTrue(false);</span>
-<span class="fc" id="L96">		}</span>
+<span class="fc" id="L92">			r = rp.acquireReusable();</span>
+<span class="nc" id="L93">		} catch (NotFreeInstanceException e) {</span>
+<span class="nc" id="L94">			assertTrue(false);</span>
+<span class="fc" id="L95">		}</span>
 		try {
-<span class="fc" id="L98">			rp.releaseReusable(r);</span>
-<span class="fc" id="L99">			release = true;</span>
-<span class="nc" id="L100">			rp.releaseReusable(r);</span>
-<span class="fc" id="L101">		} catch (DuplicatedInstanceException e) {</span>
-<span class="fc" id="L102">			excep = true;</span>
-<span class="nc" id="L103">		}</span>
-<span class="fc" id="L104">		assertTrue(release);</span>
-<span class="fc" id="L105">		assertTrue(excep);</span>
-<span class="fc" id="L106">	}</span>
+<span class="fc" id="L97">			rp.releaseReusable(r);</span>
+<span class="fc" id="L98">			release = true;</span>
+<span class="nc" id="L99">			rp.releaseReusable(r);</span>
+<span class="fc" id="L100">		} catch (DuplicatedInstanceException e) {</span>
+<span class="fc" id="L101">			excep = true;</span>
+<span class="nc" id="L102">		}</span>
+<span class="fc" id="L103">		assertTrue(release);</span>
+<span class="fc" id="L104">		assertTrue(excep);</span>
+<span class="fc" id="L105">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
