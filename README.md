@@ -36,7 +36,7 @@ Las pruebas indican que la clase ReusablePool tiene una covertura del 100% como 
 - ¿Cuál es el esfuerzo invertido en realizar la actividad?
 
 Teniendo en cuenta que la herramienta de eclipse la tenía un poco olvidada puesto que hace algunos años que no la utilizo, me ha llevado más tiempo del esperado.
-En total he empleado unas 6 horas en dos días aproximadamente.
+En total he empleado unas 6 horas aproximadamente en tres días.
 
 - ¿Cuál es el número de fallos encontrados en el código?
 
