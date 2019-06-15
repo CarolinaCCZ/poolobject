@@ -31,7 +31,7 @@ No, el trabajo lo he realizado de manera individual. GitHub: https://github.com/
 
 - ¿Tiene calidad el conjunto de pruebas disponibles?
 
-
+Las pruebas indican que la clase ReusablePool tiene una covertura del 100% como se puede ver en Codecov. La cobertura total del proyecto es del 74,28% puesto que las clases Client y Reusable están al 50%.
 
 - ¿Cuál es el esfuerzo invertido en realizar la actividad?
 
